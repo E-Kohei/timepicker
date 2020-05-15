@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- timepicker -->
+    <link rel="stylesheet" href="./css/timepicker_class_version.css">
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <!-- timepicker -->
+    <script src="./js/timepicker_class_version.js"></script>
+
+    <title>My timepicker</title>
+  </head>
+  <body>
+
+    <div class="container">
+      <h1>My timepicker<h1>
+
+      <h2>simple example</h2>
+      <div class="row mb-5">
+        <input class="form-control col-sm-3 simpleExample" type="text">
+        <input class="form-control col-sm-3 simpleExample" type="text">
+      </div>
+
+      <h2>
+        hourHeaderText, minHeaderText, okButtonText, cancelButttonText, selectSize
+      </h2>
+      <div class="row mb-5">
+        <input id="textAndSizeExample" class="form-control col-sm-3" type="text">
+      </div>
+
+      <h2>timeFormat</h2>
+      <div class="row mb-5">
+        <input id="timeFormatExample" class="form-control col-sm-3" type="text">
+      </div>
+
+      <h2>minTime, maxTime</h2>
+      <div class="row mb-5">
+        <input id="minmaxTimeExample1" class="form-control col-sm-3" type="text">
+      </div>
+
+      <h2>minTime, maxTime crossing midnight</h2>
+      <div class="row mb-5">
+        <input id="minmaxTimeExample2" class="form-control col-sm-3" type="text">
+      </div>
+
+      <h2>disableTimeRange</h2>
+      <div class="row mb-5">
+        <input id="disableTimeRangeExample" class="form-control col-sm-3" type="text">
+      </div>
+
+      <h2>hourStep, minStep</h2>
+      <div class="row mb-5">
+        <input id="stepExample1" class="form-control col-sm-3" type="text">
+      </div>
+
+      <h2>timeStep</h2>
+      <div class="row mb-5">
+        <input id="stepExample2" class="form-control col-sm-3" type="text">
+      </div>
+
+      <h2>scrollDefault</h2>
+      <div class="row mb-5">
+        <input id="scrollDefaultExample" class="form-control col-sm-3" type="text">
+      </div>
+
+      <h2>use12HourClock</h2>
+      <div class="row mb-5">
+        <input id="12HourClockExample" class="form-control col-sm-3" type="text">
+      </div>
+
+      <h2>ampmText</h2>
+      <div class="row mb-5">
+        <input id="ampmTextExample" class="form-control col-sm-3" type="text">
+      </div>
+
+      <h2>use12HourClock + minTime, maxTime</h2>
+      <div class="row mb-5">
+        <input id="12HourPlusMinMaxTimeExample" class="form-control col-sm-3" type="text">
+      </div>
+
+      <h2>use12HourClock + timeStep</h2>
+      <div class="row mb-5">
+        <input id="12HourPlusTimeStepExample" class="form-control col-sm-3" type="text">
+      </div>
+
+      <h2>change event</h2>
+      <div class="row mb-5">
+        <input id="eventExample" class="form-control col-sm-3 time-input"
+        type="text">
+        <div id="output" class="col-sm-3"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      $( document ).ready(function(){
+        $(".simpleExample").timepicker();
+
+        $("#textAndSizeExample").timepicker({
+          hourHeaderText: "時",
+          minHeaderText: "分",
+          okButtonText: "決定",
+          cancelButtonText: "閉じる",
+          selectSize: 5
+        });
+
+        $("#timeFormatExample").timepicker({
+          timeFormat: "%g:%i %A"
+        });
+
+        $("#minmaxTimeExample1").timepicker({
+          minTime: "11:00",
+          maxTime: "10:00 pm"
+        });
+
+        $("#minmaxTimeExample2").timepicker({
+          minTime: "10:45",
+          maxTime: "10:15"
+        })
+
+        $("#disableTimeRangeExample").timepicker({
+          disableTimeRanges: [["10:00", "14:30"], ["14:45", "23:15"]]
+        });
+
+        $("#stepExample1").timepicker({
+          minTime: "10:45",
+          maxTime: "19:15",
+          hourStep: 2,
+          minStep: 7
+        });
+
+        $("#stepExample2").timepicker({
+          minTime: "10:45",
+          maxTime: "19:15",
+          timeStep: 7
+        });
+
+        $("#scrollDefaultExample").timepicker({
+          scrollDefault: "13:15"
+        });
+
+        $("#12HourClockExample").timepicker({
+          use12HourClock: true,
+          timeFormat: "%g:%i %A"
+        });
+
+        $("#ampmTextExample").timepicker({
+          use12HourClock: true,
+          timeFormat: "%a %g時%i分",
+          ampmText: { am:"午前", pm:"午後" }
+        });
+
+        $("#12HourPlusMinMaxTimeExample").timepicker({
+          use12HourClock: true,
+          timeFormat: "%h:%i %a",
+          minTime: "13:15",
+          maxTime: "6:15"
+        });
+
+        $("#12HourPlusTimeStepExample").timepicker({
+          use12HourClock: true,
+          timeFormat: "%h:%i %a",
+          minTime: "13:15",
+          maxTime: "6:15",
+          timeStep: 7
+        });
+
+        $("#eventExample")
+          .timepicker()
+          .on("change", function(){
+            $("#output").html($("#eventExample").val());
+        });
+      });
+    </script>
+  </body>
+</html>
