@@ -1,8 +1,7 @@
 timepicker as a jQuery plugin
 =============================
 
-<img src="https://github.com/E-Kohei/timepicker/screenshots/timepicker_24.png" alt="timepicker"/>
-<img src="https://github.com/E-Kohei/timepicker/screenshots/timepicker_12.png" alt="timepicker"/>
+<img src="https://github.com/E-Kohei/timepicker/blob/master/screenshots/timepicker_24.png" alt="timepicker"/>
 
 This is a simple timepicker as a jQuery plugin. This also requires bootstrap.css for compatible layout with many browsers. 
  
